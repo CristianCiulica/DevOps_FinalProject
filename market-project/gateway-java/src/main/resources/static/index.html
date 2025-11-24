@@ -295,7 +295,6 @@
             badge.innerText = "● Live Market";
         }
 
-        // Actualizare Grafic
         const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         myChart.data.labels.push(time);
         myChart.data.datasets[0].data.push(currentPrice);
@@ -307,7 +306,6 @@
         myChart.update();
     }
 
-    // --- 4. AI Logic ---
     function askAI() {
         const btn = document.getElementById('aiBtn');
         const container = document.getElementById('aiContent');
