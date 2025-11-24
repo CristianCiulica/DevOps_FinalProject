@@ -3,13 +3,11 @@ use std::time::Duration;
 use rand::Rng;
 use serde::{Deserialize, Serialize};
 use reqwest::blocking::Client;
-
 #[derive(Deserialize, Debug)]
 struct BinanceTicker {
     symbol: String,
     price: String,
 }
-
 #[derive(Serialize)]
 struct PriceData {
     symbol: String,
@@ -18,15 +16,13 @@ struct PriceData {
     timestamp: u64,
     is_anomaly: bool,
 }
-
 fn main() {
     let gateway_url = "http://java-gateway:8080/api/ingest";
     let binance_url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
-
     let client = Client::new();
     let mut rng = rand::thread_rng();
 
-    println!("🚀 Rust Aggregator LIVE: Conectare la Binance API...");
+    println!("Rust Aggregator LIVE: Conectare la Binance API...");
 
     loop {
         let current_price: f64;
@@ -68,7 +64,6 @@ fn main() {
             Ok(_) => {},
             Err(e) => eprintln!("❌ Java Gateway e jos: {}", e),
         }
-
         thread::sleep(Duration::from_secs(3));
     }
 }
